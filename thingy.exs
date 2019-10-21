@@ -50,4 +50,17 @@ defmodule Thingy do
     def map([], _fun) do
         []
     end
+
+    def map2([a |rest], fun) do
+        results = [fun.(a)]
+        map2(rest, fun, results)
+    end
+
+    def map2([a |rest], fun, results) do
+        map2(rest, fun, results ++ [fun.(a)])
+    end
+
+    def map2([], _fun, results) do
+        results
+    end
 end
